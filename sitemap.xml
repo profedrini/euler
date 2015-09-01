@@ -7,22 +7,34 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://profedrini.github.io/euler/</loc>
-  <lastmod>2015-09-01T00:11:00Z</lastmod>
+  <lastmod>2015-09-01T18:43:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://profedrini.github.io/euler/2015/</loc>
+  <lastmod>2015-09-01T18:43:00Z</lastmod>
  </url>
  <url>
   <loc>http://profedrini.github.io/euler/archive.html</loc>
-  <lastmod>2015-09-01T00:11:00Z</lastmod>
+  <lastmod>2015-09-01T18:43:00Z</lastmod>
  </url>
  <url>
   <loc>http://profedrini.github.io/euler/categories/</loc>
-  <lastmod>2015-09-01T00:11:00Z</lastmod>
+  <lastmod>2015-09-01T18:35:00Z</lastmod>
  </url>
  <url>
   <loc>http://profedrini.github.io/euler/galleries/</loc>
-  <lastmod>2015-09-01T00:11:00Z</lastmod>
+  <lastmod>2015-09-01T18:35:00Z</lastmod>
  </url>
  <url>
   <loc>http://profedrini.github.io/euler/listings/</loc>
-  <lastmod>2015-09-01T00:11:00Z</lastmod>
+  <lastmod>2015-09-01T18:35:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://profedrini.github.io/euler/posts/euler-001/</loc>
+  <lastmod>2015-09-01T18:43:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://profedrini.github.io/euler/stories/aritmeticapy/</loc>
+  <lastmod>2015-09-01T18:35:00Z</lastmod>
  </url>
 </urlset>
