@@ -14,7 +14,7 @@ article: http://ogp.me/ns/article#
 <link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
 <link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
-<link rel="canonical" href="http://profedrini.github.io/euler/stories/aritmeticapy/">
+<link rel="canonical" href="http://profedrini.github.io/euler/pages/aritmeticapy/">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
     tex2jax: {
@@ -30,7 +30,7 @@ MathJax.Hub.Config({
 </script><!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="Drini">
 <meta property="og:site_name" content="Proyecto Euler">
 <meta property="og:title" content="aritmetica.py">
-<meta property="og:url" content="http://profedrini.github.io/euler/stories/aritmeticapy/">
+<meta property="og:url" content="http://profedrini.github.io/euler/pages/aritmeticapy/">
 <meta property="og:description" content="aritmética.py¶Versión en GitHub
 Muchos problemas del proyecto Euler involucran funciones aritméticas (determinar si un número es primo, encontrar su factorización,  calcular el número de divisores, et">
 <meta property="og:type" content="article">
@@ -38,7 +38,7 @@ Muchos problemas del proyecto Euler involucran funciones aritméticas (determina
 <meta name="author" content="Drini">
 <meta property="og:site_name" content="Proyecto Euler">
 <meta property="og:title" content="aritmetica.py">
-<meta property="og:url" content="http://profedrini.github.io/euler/stories/aritmeticapy/">
+<meta property="og:url" content="http://profedrini.github.io/euler/pages/aritmeticapy/">
 <meta property="og:description" content="aritmética.py¶Versión en GitHub
 Muchos problemas del proyecto Euler involucran funciones aritméticas (determinar si un número es primo, encontrar su factorización,  calcular el número de divisores, et">
 <meta property="og:type" content="article">
@@ -84,10 +84,10 @@ Muchos problemas del proyecto Euler involucran funciones aritméticas (determina
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [2]:</div>
+<div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">itertools</span>
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">itertools</span> <span class="k">as</span> <span class="nn">it</span>
 <span class="kn">import</span> <span class="nn">math</span>
 </pre></div>
 
@@ -101,18 +101,36 @@ Muchos problemas del proyecto Euler involucran funciones aritméticas (determina
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Como base de todo nuestro proceso, generamos una lista con los números primos hasta cierto valor. Aunque en la versión final de la librería, simplemente cargamos la lista directamente en código.</p>
-
+<p>Como base de todo nuestro proceso, generamos una lista con los números primos hasta cierto valor. Aunque en la versión final de la librería, simplemente cargamos la lista directamente en código, revisamos de todos modos algunas formas de hacerlo.</p>
+<p>Por ejemplo, si queremos calcular todos los números primos menores que $10^4$:</p>
+<ul>
+<li>Generamos una lista  [0,1,2,3, ..., 9999] e iremos cambiando los valores que no sean primos por cero. </li>
+<li>Dado que 1 es un caso especial, lo descartamos manualmente.</li>
+<li>Posteriormente, para cada $d\le \sqrt{MAXP}$, si L[d]=0, ya hemos determinado que no es primo (y por tanto todos sus múltiplos también). En caso contrario, tenemos un primo y usamos la criba para hacer cero todos sus múltiplos en la lista.<ul>
+<li>Esto lo hacemos con itertools.islice, que selecciona los índices 2d, 3d, 4d, ....</li>
+</ul>
+</li>
+<li>Al final, filtramos todos los valores que no se hayan anulado.</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [11]:</div>
+<div class="prompt input_prompt">In [119]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">L</span><span class="o">=</span><span class="p">[(</span><span class="n">n</span><span class="p">,</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">)]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span class="o">%%</span><span class="k">timeit</span>
+MAXP=10**4
+L=[n for n in range(MAXP)]  
+L[0]=0
+L[1]=0
+for d in range(2,int(math.sqrt(MAXP))+1):
+    if L[d]&gt;0:   # Si ya descartamos d, ya descartamos a sus múltiplos, sólo se necesita verificar si L[d]=True
+        for k in it.islice(range(MAXP), 2*d, None, d): L[k]=0
+    #if d*d&gt;MAXP: break
+Primos=[P for P in L if P&gt;0 ]
+#print(Primos)
 </pre></div>
 
 </div>
@@ -126,7 +144,7 @@ Muchos problemas del proyecto Euler involucran funciones aritméticas (determina
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[(2, 0), (3, 0), (4, 0), (4, 1), (5, 0), (5, 1), (6, 0), (6, 1), (6, 2), (7, 0), (7, 1), (7, 2), (8, 0), (8, 1), (8, 2), (8, 3), (9, 0), (9, 1), (9, 2), (9, 3), (10, 0), (10, 1), (10, 2), (10, 3), (10, 4), (11, 0), (11, 1), (11, 2), (11, 3), (11, 4), (12, 0), (12, 1), (12, 2), (12, 3), (12, 4), (12, 5), (13, 0), (13, 1), (13, 2), (13, 3), (13, 4), (13, 5), (14, 0), (14, 1), (14, 2), (14, 3), (14, 4), (14, 5), (14, 6), (15, 0), (15, 1), (15, 2), (15, 3), (15, 4), (15, 5), (15, 6), (16, 0), (16, 1), (16, 2), (16, 3), (16, 4), (16, 5), (16, 6), (16, 7), (17, 0), (17, 1), (17, 2), (17, 3), (17, 4), (17, 5), (17, 6), (17, 7), (18, 0), (18, 1), (18, 2), (18, 3), (18, 4), (18, 5), (18, 6), (18, 7), (18, 8), (19, 0), (19, 1), (19, 2), (19, 3), (19, 4), (19, 5), (19, 6), (19, 7), (19, 8)]
+<pre>100 loops, best of 3: 6.02 ms per loop
 </pre>
 </div>
 </div>
@@ -134,6 +152,117 @@ Muchos problemas del proyecto Euler involucran funciones aritméticas (determina
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Usando el mismo código para hallar todos los primos menores que un millón:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [123]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="o">%%</span><span class="k">time</span>
+MAXP=10**6
+L=[n for n in range(MAXP)]  
+L[0]=0
+L[1]=0
+for d in range(2,int(math.sqrt(MAXP))+1):
+    if L[d]&gt;0:   # Si ya descartamos d, ya descartamos a sus múltiplos, sólo se necesita verificar si L[d]=True
+        for k in it.islice(range(MAXP), 2*d, None, d): L[k]=0
+Primos=[P for P in L if P&gt;0 ]
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>CPU times: user 3.3 s, sys: 1 ms, total: 3.3 s
+Wall time: 3.3 s
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Toma menos de 4 segundos el hallar todos los primos menores que un millón.</p>
+<p>Sólo por curiosidad, haremos un intento híbrido: generamos todos los primos menores que $10^3$ y luego los usamos para cribar los números hasta $10^3$:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [124]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="o">%%</span><span class="k">time</span>
+MAXP=10**6
+MEDP=10**3
+S=[n for n in range(MEDP)]   # En python3, range es un generador, no existe xrange
+S[0]=0
+S[1]=0
+for d in range(2,int(math.sqrt(MEDP))+1):
+    if S[d]&gt;0:   # Si ya descartamos d, ya descartamos a sus múltiplos, sólo se necesita verificar si L[d]=True
+        for k in it.islice(range(MEDP), 2*d, None, d): S[k]=0
+S=[p for p in S if p&gt;0 ]
+L=[n for n in range(MEDP, MAXP)]
+for p in S:
+    L = [m for m in L if m%p&gt;0]
+    
+Primos=(S+L)
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>CPU times: user 3.53 s, sys: 1 ms, total: 3.53 s
+Wall time: 3.53 s
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Dado que no hay una mejora sustancial, optamos por quedarnos con la versión primera, ya que es más simple.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
