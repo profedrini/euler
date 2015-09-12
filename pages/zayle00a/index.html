@@ -43,7 +43,7 @@ MathJax.Hub.Config({
 
 Dado que $1+2+\cdots + n = \frac{n(n+1)}{2}$ y $n, n+1$ son prim">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2015-09-12T03:02:45Z">
+<meta property="article:published_time" content="2015-09-12T03:05:36Z">
 <meta name="author" content="Drini">
 <meta property="og:site_name" content="Proyecto Euler">
 <meta property="og:title" content="Zayle00a">
@@ -60,7 +60,7 @@ Dado que $1+2+\cdots + n = \frac{n(n+1)}{2}$ y $n, n+1$ son prim">
 
 Dado que $1+2+\cdots + n = \frac{n(n+1)}{2}$ y $n, n+1$ son prim">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2015-09-12T03:02:45Z">
+<meta property="article:published_time" content="2015-09-12T03:05:36Z">
 </head>
 <body>
     <section class="social"><ul>
@@ -123,17 +123,15 @@ Dado que $1+2+\cdots + n = \frac{n(n+1)}{2}$ y $n, n+1$ son prim">
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [33]:</div>
+<div class="prompt input_prompt">In [37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="o">%%</span><span class="k">time</span>
 MAXN = 10**7
-count=1  # El caso 1=1^2 es aparte
+count=1  
 for a in range(3,MAXN,2):
     a2 = a*a
-    if SideCheck(a2-1):
-        count=count+1
-    elif SideCheck(a2+1):
+    if SideCheck(a2+1) or SideCheck(a2-1):
         count=count+1
 print(count)
 </pre></div>
@@ -150,8 +148,8 @@ print(count)
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>19
-CPU times: user 9.15 s, sys: 0 ns, total: 9.15 s
-Wall time: 9.14 s
+CPU times: user 9.09 s, sys: 3 ms, total: 9.09 s
+Wall time: 9.08 s
 </pre>
 </div>
 </div>
@@ -167,7 +165,7 @@ Wall time: 9.14 s
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="o">%%</span><span class="k">time</span>
 MAXN = 10**7
-count=1  # El caso 1=1^2 es aparte
+count=1 
 for a in range(3,MAXN,2):
     a2=a*a
     if SideCheck(a2-1):
