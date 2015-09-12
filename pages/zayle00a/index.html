@@ -43,7 +43,7 @@ MathJax.Hub.Config({
 
 Dado que $1+2+\cdots + n = \frac{n(n+1)}{2}$ y $n, n+1$ son prim">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2015-09-12T02:39:28Z">
+<meta property="article:published_time" content="2015-09-12T02:59:51Z">
 <meta name="author" content="Drini">
 <meta property="og:site_name" content="Proyecto Euler">
 <meta property="og:title" content="Zayle00a">
@@ -60,7 +60,7 @@ Dado que $1+2+\cdots + n = \frac{n(n+1)}{2}$ y $n, n+1$ son prim">
 
 Dado que $1+2+\cdots + n = \frac{n(n+1)}{2}$ y $n, n+1$ son prim">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2015-09-12T02:39:28Z">
+<meta property="article:published_time" content="2015-09-12T02:59:51Z">
 </head>
 <body>
     <section class="social"><ul>
@@ -105,15 +105,12 @@ Dado que $1+2+\cdots + n = \frac{n(n+1)}{2}$ y $n, n+1$ son prim">
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [28]:</div>
+<div class="prompt input_prompt">In [29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">math</span>
 <span class="k">def</span> <span class="nf">SideCheck</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
     <span class="sd">''' Determina si m es de la forma 2k^2 '''</span>
-    <span class="k">if</span> <span class="n">m</span><span class="o">%</span><span class="k">8</span> != 0 and m%8 !=2: return False 
-    <span class="c">#¿"optimización" innecesaria?</span>
-
     <span class="n">r</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">m</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">r</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="k">False</span>
     <span class="k">return</span> <span class="k">True</span>
@@ -126,22 +123,41 @@ Dado que $1+2+\cdots + n = \frac{n(n+1)}{2}$ y $n, n+1$ son prim">
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [35]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="o">%%</span><span class="k">time</span>
 MAXN = 10**7
 count=1  # El caso 1=1^2 es aparte
-print(1)
 for a in range(3,MAXN,2):
     a2 = a*a
     if SideCheck(a2-1):
         count=count+1
-        print(a2*(a2-1)//2, )
-    if SideCheck(a*a+1):
-        print(a2*(a2+1)//2)
+    elif SideCheck(a2+1):
         count=count+1
-print("\n",count)
+print(count)
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="o">%%</span><span class="k">time</span>
+MAXN = 10**7
+count=1  # El caso 1=1^2 es aparte
+for a in range(3,MAXN,2):
+    a2=a*a
+    if SideCheck(a2-1):
+        count=count+1 
+    else:
+        count=count+ SideCheck(a2+1)
+print(count)
 </pre></div>
 
 </div>
@@ -155,28 +171,8 @@ print("\n",count)
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>1
-36
-1225
-41616
-1413721
-48024900
-1631432881
-55420693056
-1882672131025
-63955431761796
-2172602007770041
-73804512832419600
-2507180834294496361
-85170343853180456676
-2893284510173841030625
-98286503002057414584576
-3338847817559778254844961
-113422539294030403250144100
-3853027488179473932250054441
-
- 19
-CPU times: user 9.49 s, sys: 0 ns, total: 9.49 s
+<pre>19
+CPU times: user 9.49 s, sys: 1 ms, total: 9.49 s
 Wall time: 9.48 s
 </pre>
 </div>
