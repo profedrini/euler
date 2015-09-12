@@ -43,7 +43,7 @@ MathJax.Hub.Config({
 
 Dado que $1+2+\cdots + n = \frac{n(n+1)}{2}$ y $n, n+1$ son prim">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2015-09-12T03:05:36Z">
+<meta property="article:published_time" content="2015-09-12T03:06:59Z">
 <meta name="author" content="Drini">
 <meta property="og:site_name" content="Proyecto Euler">
 <meta property="og:title" content="Zayle00a">
@@ -60,7 +60,7 @@ Dado que $1+2+\cdots + n = \frac{n(n+1)}{2}$ y $n, n+1$ son prim">
 
 Dado que $1+2+\cdots + n = \frac{n(n+1)}{2}$ y $n, n+1$ son prim">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2015-09-12T03:05:36Z">
+<meta property="article:published_time" content="2015-09-12T03:06:59Z">
 </head>
 <body>
     <section class="social"><ul>
@@ -128,7 +128,8 @@ Dado que $1+2+\cdots + n = \frac{n(n+1)}{2}$ y $n, n+1$ son prim">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="o">%%</span><span class="k">time</span>
 MAXN = 10**7
-count=1  
+count=1  + sum([SideCheck(a2+1) or Side])
+
 for a in range(3,MAXN,2):
     a2 = a*a
     if SideCheck(a2+1) or SideCheck(a2-1):
