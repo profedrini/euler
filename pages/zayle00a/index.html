@@ -43,7 +43,7 @@ MathJax.Hub.Config({
 
 Dado que $1+2+\cdots + n = \frac{n(n+1)}{2}$ y $n, n+1$ son prim">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2015-09-12T02:13:40Z">
+<meta property="article:published_time" content="2015-09-12T02:17:03Z">
 <meta name="author" content="Drini">
 <meta property="og:site_name" content="Proyecto Euler">
 <meta property="og:title" content="Zayle00a">
@@ -60,7 +60,7 @@ Dado que $1+2+\cdots + n = \frac{n(n+1)}{2}$ y $n, n+1$ son prim">
 
 Dado que $1+2+\cdots + n = \frac{n(n+1)}{2}$ y $n, n+1$ son prim">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2015-09-12T02:13:40Z">
+<meta property="article:published_time" content="2015-09-12T02:17:03Z">
 </head>
 <body>
     <section class="social"><ul>
@@ -112,11 +112,7 @@ Dado que $1+2+\cdots + n = \frac{n(n+1)}{2}$ y $n, n+1$ son prim">
 <span class="k">def</span> <span class="nf">SideCheck</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
     <span class="sd">'''Determina si m es de la forma 2k^2 '''</span>
     <span class="k">if</span> <span class="n">m</span><span class="o">%</span><span class="k">8</span> != 0 and m%8 !=2: return False
-    <span class="c"># Como los residuos cuadráticos módulo 8 son 0,1,4,  </span>
-    <span class="c"># entonces el doble de un residuo cuadrático sólo</span>
-    <span class="c"># puede ser 0, 2, descartando casos sin necesidad </span>
-    <span class="c"># de sacar raíz cuadrada</span>
-    
+
     <span class="n">r</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">m</span><span class="o">//</span><span class="mi">2</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">r</span><span class="o">*</span><span class="n">r</span><span class="o">!=</span><span class="n">m</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span> <span class="k">return</span> <span class="k">False</span>
     <span class="k">return</span> <span class="k">True</span>
@@ -129,7 +125,7 @@ Dado que $1+2+\cdots + n = \frac{n(n+1)}{2}$ y $n, n+1$ son prim">
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [2]:</div>
+<div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="o">%%</span><span class="k">time</span>
@@ -160,8 +156,8 @@ print("\n",count)
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
  19
-CPU times: user 12.7 s, sys: 2 ms, total: 12.7 s
-Wall time: 12.7 s
+CPU times: user 12.5 s, sys: 0 ns, total: 12.5 s
+Wall time: 12.5 s
 </pre>
 </div>
 </div>
