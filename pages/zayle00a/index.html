@@ -43,7 +43,7 @@ MathJax.Hub.Config({
 
 Dado que $1+2+\cdots + n = \frac{n(n+1)}{2}$ y $n, n+1$ son prim">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2015-09-12T03:01:27Z">
+<meta property="article:published_time" content="2015-09-12T03:02:45Z">
 <meta name="author" content="Drini">
 <meta property="og:site_name" content="Proyecto Euler">
 <meta property="og:title" content="Zayle00a">
@@ -60,7 +60,7 @@ Dado que $1+2+\cdots + n = \frac{n(n+1)}{2}$ y $n, n+1$ son prim">
 
 Dado que $1+2+\cdots + n = \frac{n(n+1)}{2}$ y $n, n+1$ son prim">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2015-09-12T03:01:27Z">
+<meta property="article:published_time" content="2015-09-12T03:02:45Z">
 </head>
 <body>
     <section class="social"><ul>
@@ -112,8 +112,8 @@ Dado que $1+2+\cdots + n = \frac{n(n+1)}{2}$ y $n, n+1$ son prim">
 <span class="k">def</span> <span class="nf">SideCheck</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
     <span class="sd">''' Determina si m es de la forma 2k^2 '''</span>
     <span class="n">r</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">m</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">r</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="k">False</span>
-    <span class="k">return</span> <span class="k">True</span>
+    <span class="k">if</span> <span class="n">r</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="mi">1</span>
 </pre></div>
 
 </div>
@@ -162,7 +162,7 @@ Wall time: 9.14 s
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [28]:</div>
+<div class="prompt input_prompt">In [34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="o">%%</span><span class="k">time</span>
@@ -189,8 +189,8 @@ print(count)
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>19
-CPU times: user 9.49 s, sys: 1 ms, total: 9.49 s
-Wall time: 9.48 s
+CPU times: user 9.5 s, sys: 0 ns, total: 9.5 s
+Wall time: 9.49 s
 </pre>
 </div>
 </div>
