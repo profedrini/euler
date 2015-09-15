@@ -75,6 +75,20 @@ MathJax.Hub.Config({
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">title</span> <span class="o">=</span> <span class="s">"Bidirectional IPython-Nikola workflow to write your blog post"</span>
+<span class="kn">import</span> <span class="nn">aritmetica</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
     <div class="input_area">
@@ -113,6 +127,9 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="aritmética.py">aritmética.py<a class="anchor-link" href="posts/aritmeticapy/#aritm%C3%A9tica.py">¶</a>
 </h2>
+<p>[TOC]</p>
+<p>anyway</p>
+<p>[[TOC]]</p>
 <p><a href="https://github.com/profedrini/euler/blob/master/aritmetica.py">Versión en GitHub</a></p>
 <p>Muchos problemas del proyecto Euler involucran funciones aritméticas (determinar si un número es primo, encontrar su factorización,  calcular el número de divisores, etcétera).</p>
 <p>Por ello, implemento una librería para funciones aritméticas.</p>
@@ -161,7 +178,7 @@ MathJax.Hub.Config({
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [119]:</div>
+<div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="o">%%</span><span class="k">timeit</span>
@@ -188,7 +205,7 @@ Primos=[P for P in L if P&gt;0 ]
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>100 loops, best of 3: 6.02 ms per loop
+<pre>100 loops, best of 3: 5.92 ms per loop
 </pre>
 </div>
 </div>
@@ -209,7 +226,7 @@ Primos=[P for P in L if P&gt;0 ]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [125]:</div>
+<div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="o">%%</span><span class="k">time</span>
@@ -234,8 +251,8 @@ ListaPrimos=[P for P in L if P&gt;0 ]
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 3.54 s, sys: 3 ms, total: 3.54 s
-Wall time: 3.54 s
+<pre>CPU times: user 3.47 s, sys: 21 ms, total: 3.49 s
+Wall time: 3.49 s
 </pre>
 </div>
 </div>
@@ -249,7 +266,9 @@ Wall time: 3.54 s
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Toma menos de 4 segundos el hallar todos los primos menores que un millón.</p>
+<p>Toma menos de 10 segundos el hallar todos los primos menores que un millón.</p>
+<h3 id="Alternativas">Alternativas<a class="anchor-link" href="posts/aritmeticapy/#Alternativas">¶</a>
+</h3>
 <p>Sólo por curiosidad, haremos un intento híbrido: generamos todos los primos menores que $10^3$ y luego los usamos para cribar los números hasta $10^3$:</p>
 
 </div>
@@ -257,7 +276,7 @@ Wall time: 3.54 s
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [126]:</div>
+<div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="o">%%</span><span class="k">time</span>
@@ -288,8 +307,8 @@ ListaPrimos=(S+L)
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 3.55 s, sys: 4 ms, total: 3.55 s
-Wall time: 3.55 s
+<pre>CPU times: user 3.53 s, sys: 3 ms, total: 3.53 s
+Wall time: 3.53 s
 </pre>
 </div>
 </div>
@@ -310,7 +329,7 @@ Wall time: 3.55 s
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [184]:</div>
+<div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="o">%%</span><span class="k">time</span>
@@ -333,8 +352,8 @@ ListaPrimos=L
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 5.54 s, sys: 2 ms, total: 5.54 s
-Wall time: 5.53 s
+<pre>CPU times: user 5.44 s, sys: 4 ms, total: 5.45 s
+Wall time: 5.44 s
 </pre>
 </div>
 </div>
@@ -355,147 +374,36 @@ Wall time: 5.53 s
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [127]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">ConjuntoPrimos</span><span class="o">=</span><span class="nb">set</span><span class="p">(</span><span class="n">ListaPrimos</span><span class="p">)</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Finalmente, envolvemos todo en una bonita función</p>
 
 </div>
 </div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [183]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 5.51 s, sys: 3 ms, total: 5.51 s
-Wall time: 5.51 s
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [178]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ListaPrimos</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>1229
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [188]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="o">%%</span><span class="k">time</span>
-MAXP=10**4
-L=[n for n in range(MAXP)]  
-L[0]=0
-L[1]=0
-for d in range(2,int(math.sqrt(MAXP))+1):
-    if L[d]&gt;0:   # Si ya descartamos d, ya descartamos a sus múltiplos, sólo se necesita verificar si L[d]=True
-        for k in it.islice(range(MAXP), 2*d, None, d): L[k]=0
-ListaPrimos=[P for P in L if P&gt;0 ]
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>CPU times: user 25 ms, sys: 1 ms, total: 26 ms
-Wall time: 25.4 ms
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [189]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ListaPrimos</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>1229
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class=" highlight hl-ipython3"><pre><span class="c">#aritmetica.py</span>
+
+<span class="kn">import</span> <span class="nn">itertools</span> <span class="k">as</span> <span class="nn">it</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="c"># Inicializa una lista de primos para las demás funciones</span>
+<span class="n">L</span><span class="o">=</span><span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">MAXP</span><span class="p">)]</span>  
+<span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">MAXP</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">L</span><span class="p">[</span><span class="n">d</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">it</span><span class="o">.</span><span class="n">islice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">MAXP</span><span class="p">),</span> <span class="mi">2</span><span class="o">*</span><span class="n">d</span><span class="p">,</span> <span class="k">None</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span> <span class="n">L</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
+
+
+<span class="n">ListaPrimos</span><span class="o">=</span><span class="p">[</span><span class="n">P</span> <span class="k">for</span> <span class="n">P</span> <span class="ow">in</span> <span class="n">L</span> <span class="k">if</span> <span class="n">P</span><span class="o">&gt;</span><span class="mi">0</span> <span class="p">]</span>
+<span class="n">ConjuntoPrimos</span><span class="o">=</span><span class="nb">set</span><span class="p">(</span><span class="n">ListaPrimos</span><span class="p">)</span>  <span class="c"># Para acelerar búsqueda cuando no nos importa el orden.</span>
 </pre></div>
 
 </div>
