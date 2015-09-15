@@ -1,2 +1,424 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Proyecto Euler</title><link>http://profedrini.github.io/euler/</link><description>Notas sobre problemas del Proyecto Euler</description><atom:link type="application/rss+xml" rel="self" href="http://profedrini.github.io/euler/rss.xml"></atom:link><language>en</language><lastBuildDate>Tue, 15 Sep 2015 20:14:54 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs></channel></rss>
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>Proyecto Euler</title><link>http://profedrini.github.io/euler/</link><description>Notas sobre problemas del Proyecto Euler</description><atom:link type="application/rss+xml" rel="self" href="http://profedrini.github.io/euler/rss.xml"></atom:link><language>en</language><lastBuildDate>Tue, 15 Sep 2015 20:18:54 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>euler001</title><link>http://profedrini.github.io/euler/posts/euler001/</link><dc:creator>Drini</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+    &lt;div class="container" id="notebook-container"&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="Problema-001"&gt;Problema 001&lt;a class="anchor-link" href="http://profedrini.github.io/euler/posts/euler001/#Problema-001"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.&lt;/p&gt;
+&lt;p&gt;Find the sum of all the multiples of 3 or 5 below 1000.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [ ]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt; 
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+</description><guid>http://profedrini.github.io/euler/posts/euler001/</guid><pubDate>Tue, 15 Sep 2015 00:00:00 GMT</pubDate></item><item><title>aritmetica.py</title><link>http://profedrini.github.io/euler/posts/aritmeticapy/</link><dc:creator>Drini</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+    &lt;div class="container" id="notebook-container"&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="aritmética.py"&gt;aritmética.py&lt;a class="anchor-link" href="http://profedrini.github.io/euler/posts/aritmeticapy/#aritm%C3%A9tica.py"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;a href="https://github.com/profedrini/euler/blob/master/aritmetica.py"&gt;Versión en GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Muchos problemas del proyecto Euler involucran funciones aritméticas (determinar si un número es primo, encontrar su factorización,  calcular el número de divisores, etcétera).&lt;/p&gt;
+&lt;p&gt;Por ello, implemento una librería para funciones aritméticas.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Principios: En caso de ser posible, preferir usar ram/memoria a ciclos de cpu.&lt;/li&gt;
+&lt;li&gt;Corolario: Almacenar valores calculados para evitar calcularlos de nuevo.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;El objetivo de este documento es discutir algunas de las funciones que se encuentran en dicho archivo.&lt;/p&gt;
+&lt;p&gt;En lo posible haremos uso de las siguientes librerías estándar&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [1]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;it&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;math&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Como base de todo nuestro proceso, generamos una lista con los números primos hasta cierto valor. Aunque en la versión final de la librería, simplemente cargamos la lista directamente en código, revisamos de todos modos algunas formas de hacerlo.&lt;/p&gt;
+&lt;p&gt;Por ejemplo, si queremos calcular todos los números primos menores que $10^4$:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Generamos una lista  [0,1,2,3, ..., 9999] e iremos cambiando los valores que no sean primos por cero. &lt;/li&gt;
+&lt;li&gt;Dado que 1 es un caso especial, lo descartamos manualmente.&lt;/li&gt;
+&lt;li&gt;Posteriormente, para cada $d\le \sqrt{MAXP}$, si L[d]=0, ya hemos determinado que no es primo (y por tanto todos sus múltiplos también). En caso contrario, tenemos un primo y usamos la criba para hacer cero todos sus múltiplos en la lista.&lt;ul&gt;
+&lt;li&gt;Esto lo hacemos con itertools.islice, que selecciona los índices 2d, 3d, 4d, ....&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Al final, filtramos todos los valores que no se hayan anulado.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [119]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span class="o"&gt;%%&lt;/span&gt;&lt;span class="k"&gt;timeit&lt;/span&gt;
+MAXP=10**4
+L=[n for n in range(MAXP)]  
+L[0]=0
+L[1]=0
+for d in range(2,int(math.sqrt(MAXP))+1):
+    if L[d]&amp;gt;0:   # Si ya descartamos d, ya descartamos a sus múltiplos, sólo se necesita verificar si L[d]=True
+        for k in it.islice(range(MAXP), 2*d, None, d): L[k]=0
+    #if d*d&amp;gt;MAXP: break
+Primos=[P for P in L if P&amp;gt;0 ]
+#print(Primos)
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;100 loops, best of 3: 6.02 ms per loop
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Usando el mismo código para hallar todos los primos menores que un millón:&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [125]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span class="o"&gt;%%&lt;/span&gt;&lt;span class="k"&gt;time&lt;/span&gt;
+MAXP=10**6
+L=[n for n in range(MAXP)]  
+L[0]=0
+L[1]=0
+for d in range(2,int(math.sqrt(MAXP))+1):
+    if L[d]&amp;gt;0:   # Si ya descartamos d, ya descartamos a sus múltiplos, sólo se necesita verificar si L[d]=True
+        for k in it.islice(range(MAXP), 2*d, None, d): L[k]=0
+ListaPrimos=[P for P in L if P&amp;gt;0 ]
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;CPU times: user 3.54 s, sys: 3 ms, total: 3.54 s
+Wall time: 3.54 s
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Toma menos de 4 segundos el hallar todos los primos menores que un millón.&lt;/p&gt;
+&lt;p&gt;Sólo por curiosidad, haremos un intento híbrido: generamos todos los primos menores que $10^3$ y luego los usamos para cribar los números hasta $10^3$:&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [126]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span class="o"&gt;%%&lt;/span&gt;&lt;span class="k"&gt;time&lt;/span&gt;
+MAXP=10**6
+MEDP=10**3
+S=[n for n in range(MEDP)]   # En python3, range es un generador, no existe xrange
+S[0]=0
+S[1]=0
+for d in range(2,int(math.sqrt(MEDP))+1):
+    if S[d]&amp;gt;0:   # Si ya descartamos d, también sus múltiplos, sólo hay que verificar si L[d]=True
+        for k in it.islice(range(MEDP), 2*d, None, d): S[k]=0
+S=[p for p in S if p&amp;gt;0 ]
+L=[n for n in range(MEDP, MAXP)]
+for p in S:
+    L = [m for m in L if m%p&amp;gt;0]
+    
+ListaPrimos=(S+L)
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;CPU times: user 3.55 s, sys: 4 ms, total: 3.55 s
+Wall time: 3.55 s
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Una tercera posibilidad consiste en ir eliminando de la lista los números que no sean primos, en vez de hacer que sus índices sean iguales a cero y recolectar al final:&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [184]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span class="o"&gt;%%&lt;/span&gt;&lt;span class="k"&gt;time&lt;/span&gt;
+MAXP=10**6
+L=[2]+[n for n in range(3,MAXP,2)]  
+for d in range(3,int(math.sqrt(MAXP))+1,2):
+    if d in L:   # Si ya eliminamos d, ya eliminamos a sus múltiplos, sólo se necesita verificar si L[d]=True
+        L = [m for m in L if m&amp;lt;=d or m%d&amp;gt;0]
+ListaPrimos=L
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;CPU times: user 5.54 s, sys: 2 ms, total: 5.54 s
+Wall time: 5.53 s
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;La razón por la cual esto es más tardado, probablemente sea que se están copiando y modificando listas, y el manejo de memoria correspondiente lleve más tiempo que simplemente cambiar los valores y modificar listas sólo una vez al final.&lt;/p&gt;
+&lt;p&gt;Dado que no hay una mejora sustancial en las dos versiones, optamos por quedarnos con la versión primera, ya que es más simple.&lt;/p&gt;
+&lt;p&gt;Dado que la verificación de pertenencia es más rápida con un conjunto, creamos paralelamente la versión no ordenada:&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [127]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span class="n"&gt;ConjuntoPrimos&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ListaPrimos&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [183]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt; 
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;CPU times: user 5.51 s, sys: 3 ms, total: 5.51 s
+Wall time: 5.51 s
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [178]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ListaPrimos&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;1229
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [188]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span class="o"&gt;%%&lt;/span&gt;&lt;span class="k"&gt;time&lt;/span&gt;
+MAXP=10**4
+L=[n for n in range(MAXP)]  
+L[0]=0
+L[1]=0
+for d in range(2,int(math.sqrt(MAXP))+1):
+    if L[d]&amp;gt;0:   # Si ya descartamos d, ya descartamos a sus múltiplos, sólo se necesita verificar si L[d]=True
+        for k in it.islice(range(MAXP), 2*d, None, d): L[k]=0
+ListaPrimos=[P for P in L if P&amp;gt;0 ]
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;CPU times: user 25 ms, sys: 1 ms, total: 26 ms
+Wall time: 25.4 ms
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [189]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ListaPrimos&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;1229
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [ ]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt; 
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+</description><guid>http://profedrini.github.io/euler/posts/aritmeticapy/</guid><pubDate>Tue, 01 Sep 2015 18:31:17 GMT</pubDate></item></channel></rss>
